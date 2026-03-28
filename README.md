@@ -8,8 +8,8 @@ Find out with `oops`
 
 ```bash
 npx @orangemug/oops --help
-# ./oops <dangerous_package_versions>
-#
+# npx @orangemug/oops <dangerous_package_versions>
+# 
 # Example: npx @orangemug/oops '@ctrl/tinycolor:4.1.1' '@ctrl/tinycolor:4.1.2'
 ```
 

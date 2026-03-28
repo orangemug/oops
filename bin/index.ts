@@ -37,13 +37,12 @@ async function run(packages: string[]) {
 }
 
 const HELP_TEXT = `
-./oops <dangerous_package_versions>
+npx @orangemug/oops <dangerous_package_versions>
 
-Example: ./oops @ctrl/tinycolor:4.1.1 @ctrl/tinycolor:4.1.2
+Example: npx @orangemug/oops '@ctrl/tinycolor:4.1.1' '@ctrl/tinycolor:4.1.2'
 `.trim();
 
 const argv = minimist(process.argv.slice(2));
-
 if (argv._.length < 1 || argv.help || argv.h) {
   console.log(HELP_TEXT);
   process.exit(0);
