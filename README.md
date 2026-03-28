@@ -10,7 +10,7 @@ Find out with `oops`
 npx @orangemug/oops --help
 # ./oops <dangerous_package_versions>
 #
-# Example: npx @orangemug/oops @ctrl/tinycolor:4.1.1 @ctrl/tinycolor:4.1.2
+# Example: npx @orangemug/oops '@ctrl/tinycolor:4.1.1' '@ctrl/tinycolor:4.1.2'
 ```
 
 You can attach this command to a bug tracker ticket somewhere in your company/organisation
@@ -19,8 +19,8 @@ You can attach this command to a bug tracker ticket somewhere in your company/or
 >
 > ```bash
 > npx @orangemug/oops \
->   @ctrl/tinycolor:4.1.1 \
->   @ctrl/tinycolor:4.1.2
+>   '@ctrl/tinycolor:4.1.1' \
+>   '@ctrl/tinycolor:4.1.2'
 > ```
 
 The examples are from <https://orca.security/resources/blog/npm-malware-campaign-tinycolor/>
