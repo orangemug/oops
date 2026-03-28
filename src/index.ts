@@ -1,6 +1,7 @@
 import { exec as execCallback } from "child_process";
 import { promisify } from "util";
 import semver from 'semver'
+import validSemver from 'semver/ranges/valid.js'
 
 const exec = promisify(execCallback);
 
@@ -39,7 +40,7 @@ async function yarnDoesPackageExist (pkgName: string) {
 }
 
 export async function doesPackageExistInCache(pkgName: string, version: string) {
-    if (!semver.valid(version)) {
+    if (!validSemver(version)) {
         throw new Error(`Invalid version range "${version}"`)
     }
 
