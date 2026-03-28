@@ -26,6 +26,11 @@
       }
     }
   },
+  "files": [
+    "./dist/npm",
+    "./package.json",
+    "./README.md"
+  ],
   "devDependencies": {
     "@rollup/plugin-typescript": "^12.3.0",
     "@tsconfig/node22": "^22.0.5",
