@@ -23,5 +23,7 @@ You can attach this command to a bug tracker ticket somewhere in your company/or
 
 The examples are from <https://orca.security/resources/blog/npm-malware-campaign-tinycolor/>
 
+It also support ranges such as `^4` 
+
 ## Licence
 MIT

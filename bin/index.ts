@@ -10,6 +10,10 @@ async function run (packages: string[]) {
     
     for (const pkg of packages) {
         const [pkgName, version] = pkg.split(":");
+        if (version === undefined || version === "") {
+            console.error(chalk.red(`'${pkg}' doesn't contain a version, add a version, for example '${pkg}:^2' (change the semver version)`))
+            process.exit(2)
+        }
         if (pkgName && version) {
             const output = await doesPackageExistInCache(pkgName, version);            
             console.log(`${chalk.magenta(pkgName)}:${version}`)
