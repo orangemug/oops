@@ -38,7 +38,7 @@ Example: ./oops @ctrl/tinycolor:4.1.1 @ctrl/tinycolor:4.1.2
 
 const argv = minimist(process.argv.slice(2));
 
-if (argv._.length < 1 && argv.help || argv.h) {
+if (argv._.length < 1 || argv.help || argv.h) {
     console.log(HELP_TEXT)
     process.exit(0)
 }
