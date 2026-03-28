@@ -1,6 +1,6 @@
 # `@orangemug/oops`
 
-Have I got a compromised pacakge in my npm/pnpm/yarn cache?
+Have I got a pacakge version in my npm/pnpm/yarn cache?
 
 ## Why?
 
