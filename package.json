@@ -1,7 +1,7 @@
 {
   "name": "@orangemug/oops",
   "description": "Have I got a compromised pacakge in my cache?",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/orangemug/oops"
