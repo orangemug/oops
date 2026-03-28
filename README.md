@@ -21,6 +21,7 @@ You can attach this command to a bug tracker ticket somewhere in your company/or
 >   @ctrl/tinycolor:4.1.2
 > ``` 
 
+The examples are from <https://orca.security/resources/blog/npm-malware-campaign-tinycolor/>
 
 ## Licence
 MIT
