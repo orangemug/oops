@@ -13,7 +13,9 @@
     "lint:format": "npx prettier . --write",
     "build": "rollup -c rollup.config.ts && chmod +x dist/npm/bin/index.js"
   },
-  "bin": "./dist/npm/bin/index.ts",
+  "bin": {
+    "@orangemug/oops": "./dist/npm/bin/index.ts"
+  },
   "exports": {
     ".": {
       "import": {
