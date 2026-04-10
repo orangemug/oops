@@ -67,7 +67,7 @@ export async function doesPackageExistInCache(
     throw new Error(`Invalid version range "${version}"`);
   }
 
-  const effectedVersions: Record<string, string[]> = {};
+  const affectedVersions: Record<string, string[]> = {};
 
   for (const [managerName, pkgVersions] of [
     ["npm", await npmDoesPackageExist(pkgName)],
@@ -86,8 +86,8 @@ export async function doesPackageExistInCache(
     const filteredVersions = sorted.filter((pkgVersion) => {
       return semver.satisfies(pkgVersion, version);
     });
-    effectedVersions[managerName] = filteredVersions;
+    affectedVersions[managerName] = filteredVersions;
   }
 
-  return effectedVersions;
+  return affectedVersions;
 }
