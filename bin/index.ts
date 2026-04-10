@@ -1,6 +1,13 @@
 #!/usr/bin/env ./node_modules/.bin/tsx
-import chalk from "chalk";
 import { doesPackageExistInCache } from "../src";
+
+const colors = {
+  magenta: "\x1b[35m",
+  red: "\x1b[31m"
+} as const
+function withColor (color: keyof typeof colors, value: string) {
+  return `${colors[color]}${value}\x1b[0m`;
+}
 
 async function run(packages: string[]) {
   let hasErrors = false;
@@ -9,7 +16,7 @@ async function run(packages: string[]) {
     const [pkgName, version] = pkg.split(":");
     if (version === undefined || version === "") {
       console.error(
-        chalk.red(
+        withColor("red", 
           `'${pkg}' doesn't contain a version, add a version, for example '${pkg}:^2' (change the semver version)`,
         ),
       );
@@ -17,13 +24,13 @@ async function run(packages: string[]) {
     }
     if (pkgName && version) {
       const output = await doesPackageExistInCache(pkgName, version);
-      console.log(`${chalk.magenta(pkgName)}:${version}`);
+      console.log(`${withColor("magenta", pkgName)}:${version}`);
       for (const [manager, versions] of Object.entries(output)) {
         if (versions.length > 0) {
           hasErrors = true;
           console.log(` - ${manager}`);
           for (const version of versions) {
-            console.log(`    * ${chalk.red(version)}`);
+            console.log(`    * ${withColor("red", version)}`);
           }
         } else {
           console.log(` - ${manager}: none`);
