@@ -1,7 +1,6 @@
 #!/usr/bin/env ./node_modules/.bin/tsx
 import chalk from "chalk";
 import { doesPackageExistInCache } from "../src";
-import minimist from "minimist";
 
 async function run(packages: string[]) {
   let hasErrors = false;
@@ -42,10 +41,11 @@ npx @orangemug/oops <dangerous_package_versions>
 Example: npx @orangemug/oops '@ctrl/tinycolor:4.1.1' '@ctrl/tinycolor:4.1.2'
 `.trim();
 
-const argv = minimist(process.argv.slice(2));
-if (argv._.length < 1 || argv.help || argv.h) {
+
+const argv = process.argv.slice(2);
+if (argv.length < 1 || argv[0] == "--help" || argv[0] == "-h") {
   console.log(HELP_TEXT);
   process.exit(0);
 }
 
-await run(argv._ as string[]);
+await run(argv);
