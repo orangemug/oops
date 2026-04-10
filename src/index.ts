@@ -5,7 +5,22 @@ import validSemver from "semver/ranges/valid.js";
 
 const exec = promisify(execCallback);
 
+async function doesCommandExists (cmd: string) {
+  try {
+    await exec(`which ${cmd}`);
+    return true;
+  } catch (err: any) {
+    if (err.code === 1) {
+      return false;
+    }
+    throw err;
+  }
+}
+
 async function pnpmDoesPackageExist(pkgName: string) {
+  if (!await doesCommandExists("pnpm")) {
+    return []
+  }
   const result = await exec(`pnpm cache view ${pkgName}`);
   const obj = JSON.parse(result.stdout);
   for (const [_registry, data] of Object.entries<any>(obj)) {
@@ -15,6 +30,9 @@ async function pnpmDoesPackageExist(pkgName: string) {
 }
 
 async function npmDoesPackageExist(pkgName: string) {
+  if (!await doesCommandExists("npm")) {
+    return []
+  }
   const result = await exec(`npm cache ls ${pkgName}`);
   const out = [];
   for (const line of result.stdout.split("\n")) {
@@ -27,6 +45,9 @@ async function npmDoesPackageExist(pkgName: string) {
 }
 
 async function yarnDoesPackageExist(pkgName: string) {
+  if (!await doesCommandExists("yarn")) {
+    return []
+  }
   const result = await exec(`yarn cache list --pattern ${pkgName}`);
   const items = result.stdout.split("\n").map((line) => line.split(/\s+/));
   const out = [];

@@ -18,16 +18,31 @@ describe("doesPackageExistInCache", () => {
     const output = await doesPackageExistInCache("@ctrl/tinycolor", "4.1.1");
     expect(exec).toHaveBeenNthCalledWith(
       1,
-      "npm cache ls @ctrl/tinycolor",
+      "which npm",
       expect.anything(),
     );
     expect(exec).toHaveBeenNthCalledWith(
       2,
-      "pnpm cache view @ctrl/tinycolor",
+      "npm cache ls @ctrl/tinycolor",
       expect.anything(),
     );
     expect(exec).toHaveBeenNthCalledWith(
       3,
+      "which pnpm",
+      expect.anything(),
+    );
+    expect(exec).toHaveBeenNthCalledWith(
+      4,
+      "pnpm cache view @ctrl/tinycolor",
+      expect.anything(),
+    );
+    expect(exec).toHaveBeenNthCalledWith(
+      5,
+      "which yarn",
+      expect.anything(),
+    );
+    expect(exec).toHaveBeenNthCalledWith(
+      6,
       "yarn cache list --pattern @ctrl/tinycolor",
       expect.anything(),
     );
@@ -86,16 +101,31 @@ Name                 Version Registry Resolved
     });
     expect(exec).toHaveBeenNthCalledWith(
       1,
-      "npm cache ls @ctrl/tinycolor",
+      "which npm",
       expect.anything(),
     );
     expect(exec).toHaveBeenNthCalledWith(
       2,
-      "pnpm cache view @ctrl/tinycolor",
+      "npm cache ls @ctrl/tinycolor",
       expect.anything(),
     );
     expect(exec).toHaveBeenNthCalledWith(
       3,
+      "which pnpm",
+      expect.anything(),
+    );
+    expect(exec).toHaveBeenNthCalledWith(
+      4,
+      "pnpm cache view @ctrl/tinycolor",
+      expect.anything(),
+    );
+    expect(exec).toHaveBeenNthCalledWith(
+      5,
+      "which yarn",
+      expect.anything(),
+    );
+    expect(exec).toHaveBeenNthCalledWith(
+      6,
       "yarn cache list --pattern @ctrl/tinycolor",
       expect.anything(),
     );
